@@ -79,6 +79,7 @@ ul {
   padding: 20px;
   row-gap: 40px;
   place-items: center;
+  grid-template-columns: 1fr;
 }
 li {
   width: 100%;
@@ -199,6 +200,16 @@ a:hover {
   }
   to {
     transform: rotate(359deg);
+  }
+}
+@media (min-width: 700px) {
+  #pokemonList {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 900px) {
+  #pokemonList {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 .background-color-water {
