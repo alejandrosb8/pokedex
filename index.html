@@ -10,15 +10,20 @@
   </head>
   <body>
     <header>
-      <form>
-        <input type="text" id="searchBar" placeholder="Type a pokemon or number" />
+      <form id="searchForm">
+        <img src="./assets/icons/pokeball.png" alt="" />
+        <input type="text" id="searchBar" placeholder="Type a pokemon" />
         <button type="submit"></button>
       </form>
     </header>
     <main>
+      <div id="blacker" class="blacker-active">
+        <span></span>
+        <p>Extracting data from the API...</p>
+      </div>
       <ul id="pokemonList"></ul>
     </main>
     <script src="./JS/lib/axios.min.js"></script>
-    <script src="./JS/main.js" type="module"></script>
+    <script src="./JS/main.js"></script>
   </body>
 </html>
