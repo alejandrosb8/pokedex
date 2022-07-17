@@ -102,7 +102,7 @@ function pokemonListElement(pname, pnumber, psprite, ptypes) {
     typesTab.appendChild(typeTab);
   }
 
-  linkElement.href = `../pokemon.html?id=${pnumber}`;
+  linkElement.href = `./pokemon.html?id=${pnumber}`;
 
   linkElement.append(image, order, name, typesTab);
   listElement.appendChild(linkElement);

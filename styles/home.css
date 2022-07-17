@@ -211,6 +211,17 @@ a:hover {
   #pokemonList {
     grid-template-columns: 1fr 1fr 1fr;
   }
+  ul {
+    row-gap: 60px;
+  }
+  a {
+    height: 320px;
+  }
+}
+@media (min-width: 1100px) {
+  #pokemonList {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 .background-color-water {
   background-color: #4592c4;

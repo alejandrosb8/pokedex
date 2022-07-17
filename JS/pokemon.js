@@ -3,6 +3,7 @@ const spriteBehind = document.getElementById('spriteBehind');
 const spriteFrontShiny = document.getElementById('spriteFrontShiny');
 const spriteBehindShiny = document.getElementById('spriteBehindShiny');
 const htmlName = document.getElementById('name');
+const htmlPokedexNumber = document.getElementById('pokedexNumber');
 const htmlTypes = document.getElementById('types');
 const htmlAbilities = document.getElementById('abilities');
 const htmlHiddenAbility = document.getElementById('hiddenAbilities');
@@ -14,6 +15,7 @@ const htmlDefense = document.getElementById('defense');
 const htmlSpecialAttack = document.getElementById('special-attack');
 const htmlSpecialDefense = document.getElementById('special-defense');
 const htmlSpeed = document.getElementById('speed');
+const htmlTotal = document.getElementById('total');
 
 window.addEventListener('load', (e) => {
   const queryString = window.location.search;
@@ -33,6 +35,8 @@ window.addEventListener('load', (e) => {
       spriteBehindShiny.src = data.sprites.back_shiny;
 
       htmlName.textContent += capitalizeFirstLetter(data.name);
+
+      htmlPokedexNumber.textContent += data.id;
 
       const htmlTypesContainer = document.createElement('div');
       htmlTypesContainer.classList.add('types__container');
@@ -78,6 +82,14 @@ window.addEventListener('load', (e) => {
       htmlSpecialAttack.textContent += data.stats[3].base_stat;
       htmlSpecialDefense.textContent += data.stats[4].base_stat;
       htmlSpeed.textContent += data.stats[5].base_stat;
+
+      let arrayTotal = data.stats.map((x) => {
+        return x.base_stat;
+      });
+
+      htmlTotal.textContent += arrayTotal.reduce((a, b) => {
+        return a + b;
+      });
     })
     .catch((err) => {
       console.log(err);
