@@ -31,7 +31,7 @@ window.addEventListener('load', (e) => {
           pokemonArrayList.push({
             name: thisPokemon.name,
             order: thisPokemon.id,
-            sprite: thisPokemon.sprites.front_default,
+            sprite: thisPokemon.sprites.other.home.front_default,
             types: thisPokemon.types,
           });
         });
