@@ -110,5 +110,12 @@ function pokemonListElement(pname, pnumber, psprite, ptypes) {
 }
 
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  let thisString = string.replace(/-/gi, ' ');
+  const words = thisString.split(' ');
+
+  return words
+    .map((word) => {
+      return word[0].toUpperCase() + word.substring(1);
+    })
+    .join(' ');
 }

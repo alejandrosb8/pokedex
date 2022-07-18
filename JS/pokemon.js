@@ -16,11 +16,24 @@ const htmlSpecialAttack = document.getElementById('special-attack');
 const htmlSpecialDefense = document.getElementById('special-defense');
 const htmlSpeed = document.getElementById('speed');
 const htmlTotal = document.getElementById('total');
+const htmllevelingList = document.getElementById('levelingList');
+const htmltmList = document.getElementById('tmList');
+const htmltutoringList = document.getElementById('tutoringList');
+const htmlbreedingList = document.getElementById('breedingList');
+const breedingDiv = document.getElementById('breedingDiv');
+const htmlprev = document.getElementById('prev');
+const htmlnext = document.getElementById('next');
 
 window.addEventListener('load', (e) => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const pokemonId = urlParams.get('id');
+  const pokemonId = Number(urlParams.get('id'));
+
+  let nextLink = pokemonId + 1 <= 898 ? pokemonId + 1 : 1;
+  let prevLink = pokemonId - 1 >= 1 ? pokemonId - 1 : 898;
+
+  htmlprev.href = `./pokemon.html?id=${prevLink}`;
+  htmlnext.href = `./pokemon.html?id=${nextLink}`;
 
   axios
     .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
@@ -90,12 +103,106 @@ window.addEventListener('load', (e) => {
       htmlTotal.textContent += arrayTotal.reduce((a, b) => {
         return a + b;
       });
+
+      let movesArray = [];
+
+      let moveLenght = data.moves.length;
+      let count = 0;
+      data.moves.forEach((m) => {
+        let maxLenght = m.version_group_details.length;
+
+        axios
+          .get(m.move.url)
+          .then((ress) => {
+            let moveData = ress.data;
+            movesArray.push({
+              name: m.move.name,
+              level: m.version_group_details[maxLenght - 1].level_learned_at,
+              type: moveData.type.name,
+              learn: m.version_group_details[maxLenght - 1].move_learn_method.name,
+            });
+            count += 1;
+            if (count == moveLenght) {
+              movesArray.sort((a, b) => {
+                return a.level - b.level;
+              });
+
+              const levelingListArray = movesArray.filter((x) => x.learn == 'level-up');
+              const tmListArray = movesArray.filter((x) => x.learn == 'machine');
+              const tutoringListArray = movesArray.filter((x) => x.learn == 'tutor');
+              const breedingListArray = movesArray.filter((x) => x.learn == 'egg');
+
+              levelingListArray.forEach((element) => {
+                htmllevelingList.appendChild(
+                  createMoveListElement(element.name, element.level, element.type, element.learn)
+                );
+              });
+              tmListArray.forEach((element) => {
+                htmltmList.appendChild(
+                  createMoveListElement(element.name, element.level, element.type, element.learn)
+                );
+              });
+              tutoringListArray.forEach((element) => {
+                htmltutoringList.appendChild(
+                  createMoveListElement(element.name, element.level, element.type, element.learn)
+                );
+              });
+              if (breedingListArray.length > 0) {
+                breedingListArray.forEach((element) => {
+                  htmlbreedingList.appendChild(
+                    createMoveListElement(element.name, element.level, element.type, element.learn)
+                  );
+                });
+              } else {
+                breedingDiv.classList.add('breeding-disable');
+              }
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        movesArray.forEach((element) => {
+          console.log(element.name);
+        });
+      });
     })
     .catch((err) => {
       console.log(err);
     });
 });
 
+function createMoveListElement(mName, mLevel, mType, mMethod) {
+  const hmoveElement = document.createElement('li');
+
+  const hname = document.createElement('p');
+  hname.classList.add('move-name');
+  hname.textContent = capitalizeFirstLetter(mName);
+
+  const htype = document.createElement('p');
+  htype.classList.add('move-type');
+  htype.classList.add(`background-color-${mType}`);
+  htype.textContent = mType;
+
+  hmoveElement.append(hname, htype);
+
+  if (mMethod == 'level-up') {
+    const hlevel = document.createElement('p');
+    hlevel.classList.add('level-learn');
+    hlevel.textContent = mLevel;
+    hmoveElement.appendChild(hlevel);
+  }
+
+  return hmoveElement;
+}
+
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  let thisString = string.replace(/-/gi, ' ');
+  const words = thisString.split(' ');
+
+  return words
+    .map((word) => {
+      return word[0].toUpperCase() + word.substring(1);
+    })
+    .join(' ');
 }

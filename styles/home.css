@@ -72,6 +72,7 @@ header button:hover {
   background-color: hsl(19, 85%, 46%);
 }
 ul {
+  margin: auto;
   margin-top: 120px;
   list-style: none;
   display: grid;
@@ -80,6 +81,7 @@ ul {
   row-gap: 40px;
   place-items: center;
   grid-template-columns: 1fr;
+  max-width: 1300px;
 }
 li {
   width: 100%;

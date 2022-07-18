@@ -12,6 +12,48 @@ main {
   row-gap: 30px;
   color: #fff;
 }
+@media (max-width: 380px) {
+  main {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+nav {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+}
+nav a {
+  text-decoration: none;
+  font-size: 1.6rem;
+  color: #fff;
+  font-weight: 600;
+  border-bottom: 3px solid #515151;
+  transition: all 0.15s ease-out;
+  -webkit-transition: all 0.15s ease-out;
+  -moz-transition: all 0.15s ease-out;
+  -ms-transition: all 0.15s ease-out;
+  -o-transition: all 0.15s ease-out;
+}
+nav a:hover {
+  border-bottom: 3px solid #ee6b2f;
+}
+nav div {
+  background-color: #313131;
+  padding: 8px 20px;
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 15px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
 section {
   background-color: #313131;
   width: 100%;
@@ -120,6 +162,56 @@ section {
   .info__stats {
     margin-top: 0;
   }
+}
+.main__moves h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+.main__moves h3 {
+  margin: 40px auto 20px;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+ul {
+  list-style: none;
+}
+.moves__grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.moves__grid-container ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 10px;
+}
+.moves__grid-container ul li {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  font-size: 1.4rem;
+  font-weight: 500;
+  column-gap: 8px;
+  place-items: center;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #575757;
+}
+.list__header p {
+  font-weight: 600;
+  font-size: 1.6rem;
+}
+.move-type {
+  min-width: 55px;
+  text-align: center;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  font-size: 1em;
+}
+.breeding-disable {
+  display: none;
 }
 .background-color-water {
   background-color: #4592c4;

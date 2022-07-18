@@ -9,6 +9,13 @@
     <title>Document</title>
   </head>
   <body>
+    <nav>
+      <div>
+        <a href="" id="prev">Previous</a>
+        <a href="./index.html">Home</a>
+        <a href="" id="next">Next</a>
+      </div>
+    </nav>
     <main>
       <section class="main__sprites">
         <h1 id="title"></h1>
@@ -51,6 +58,45 @@
       </section>
       <section class="main__moves">
         <h2>Moves</h2>
+        <div class="moves__grid-container">
+          <div class="moves__leveling">
+            <h3>By leveling up</h3>
+            <ul id="levelingList">
+              <li class="list__header">
+                <p>Name</p>
+                <p>Type</p>
+                <p>Level</p>
+              </li>
+            </ul>
+          </div>
+          <div class="moves__tm">
+            <h3>TM/TR</h3>
+            <ul id="tmList">
+              <li class="list__header">
+                <p>Name</p>
+                <p>Type</p>
+              </li>
+            </ul>
+          </div>
+          <div class="moves__tutoring">
+            <h3>By tutoring</h3>
+            <ul id="tutoringList">
+              <li class="list__header">
+                <p>Name</p>
+                <p>Type</p>
+              </li>
+            </ul>
+          </div>
+          <div id="breedingDiv" class="moves__breeding">
+            <h3>By breeding</h3>
+            <ul id="breedingList">
+              <li class="list__header">
+                <p>Name</p>
+                <p>Type</p>
+              </li>
+            </ul>
+          </div>
+        </div>
       </section>
     </main>
     <script src="./JS/lib/axios.min.js"></script>
