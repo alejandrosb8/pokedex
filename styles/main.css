@@ -15,6 +15,12 @@ body {
   min-height: 100vh;
   background-color: #515151;
 }
+::-webkit-scrollbar-track {
+  background: #515151;
+}
+::-webkit-scrollbar-thumb {
+  background: #313131;
+}
 @media (max-width: 700px) {
   ::-webkit-scrollbar {
     width: 0px;
