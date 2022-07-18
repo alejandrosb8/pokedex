@@ -182,7 +182,7 @@ function createMoveListElement(mName, mLevel, mType, mMethod) {
   const htype = document.createElement('p');
   htype.classList.add('move-type');
   htype.classList.add(`background-color-${mType}`);
-  htype.textContent = mType;
+  htype.textContent = capitalizeFirstLetter(mType);
 
   hmoveElement.append(hname, htype);
 
