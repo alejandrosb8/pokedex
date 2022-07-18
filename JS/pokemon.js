@@ -82,9 +82,12 @@ window.addEventListener('load', (e) => {
       }
 
       let hiddenAbility = data.abilities.filter((x) => x.is_hidden);
-      let hiddenAbilityText = hiddenAbility[0].ability.name;
-      hiddenAbilityText = hiddenAbilityText.replace(/-/gi, ' ');
-      htmlHiddenAbility.textContent += capitalizeFirstLetter(hiddenAbilityText);
+      if (hiddenAbility.length > 0) {
+        let hiddenAbilityText = hiddenAbility[0].ability.name;
+        htmlHiddenAbility.textContent += capitalizeFirstLetter(hiddenAbilityText);
+      } else {
+        htmlHiddenAbility.textContent += 'None';
+      }
 
       htmlHeight.textContent += data.height / 10 + 'm';
       htmlWeight.textContent += data.weight / 10 + 'kg';
