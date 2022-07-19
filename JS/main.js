@@ -63,7 +63,7 @@ function searchPokemon(search) {
   pokemonList.innerHTML = '';
 
   let searchArray = pokemonArrayList.filter((x) => {
-    return x.name.toLowerCase().indexOf(search.toLowerCase()) > -1;
+    return x.name.toLowerCase().indexOf(search.toLowerCase().trim()) > -1;
   });
 
   searchArray.forEach((pokemon) => {
